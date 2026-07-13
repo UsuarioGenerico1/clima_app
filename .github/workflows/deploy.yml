@@ -1,9 +1,7 @@
 name: Deploy to GitHub Pages
-
-# Este bloque define CUÁNDO se ejecuta el flujo
 on:
   push:
-    branches: ['main'] # Cambia a 'master' si tu rama principal se llama así
+    branches: ['main'] 
 
 # Permisos estrictamente necesarios para que GitHub Actions pueda publicar en Pages
 permissions:
@@ -27,7 +25,7 @@ jobs:
       - name: Instalar y configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18 # Vite requiere Node 18+
+          node-version: '24.16' 
 
       - name: Instalar dependencias
         run: npm install
@@ -41,7 +39,7 @@ jobs:
       - name: Subir los archivos construidos como artefacto
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Vite guarda la versión de producción en la carpeta /dist
+          path: './dist'
 
   # Trabajo 2: Desplegar a GitHub Pages
   deploy:
@@ -49,7 +47,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build # Este trabajo espera a que el trabajo "build" termine con éxito
+    needs: build 
     steps:
       - name: Desplegar en GitHub Pages
         id: deployment
