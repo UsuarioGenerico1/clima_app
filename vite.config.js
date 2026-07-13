@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
- // base: '/NOMBRE-DE-TU-REPO/', 
+ base: '/clima_app/', 
   test: {
     environment: 'jsdom', // Simula el navegador
   }
