@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard del Clima Global</title>
+    <!-- Vinculamos tu archivo CSS -->
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Fondo animado con CSS puro -->
+  <div class="weather-background"></div>
+    <div class="app-container">
+      <h1>🌤️ Dashboard del Clima</h1>
+      
+      <div class="search-container">
+        <div class="search-box">
+          <!-- Añadimos autocomplete="off" para que el navegador no muestre su propio historial -->
+          <input type="text" id="city-input" placeholder="Ej. Guayaquil, Madrid, Tokyo..." autocomplete="off" />
+          <button id="search-btn">Buscar</button>
+        </div>
+        <!-- Aquí se inyectarán las sugerencias -->
+        <ul id="suggestions" class="suggestions-list"></ul>
+      </div>
+
+      <!-- Aquí mostraremos el resultado del API -->
+      <div id="weather-result" class="weather-result">
+        <p class="placeholder-text">Busca una ciudad para ver el clima actual.</p>
+      </div>
+    </div>
+
+    <!-- Vinculamos tu archivo JS principal -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

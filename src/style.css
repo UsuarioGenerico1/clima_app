@@ -1,0 +1,211 @@
+/* Reseteo básico y tipografía */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Contenedor principal */
+.app-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #1a202c;
+}
+
+/* Buscador */
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #3b82f6;
+}
+
+button {
+  padding: 0.75rem 1.2rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+/* Tarjeta del Clima */
+.weather-card {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.weather-icon {
+  font-size: 5rem;
+  margin: 0.5rem 0;
+}
+
+.city-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.temp {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0f172a;
+  margin: 0.5rem 0;
+}
+
+.humidity {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.placeholder-text {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- AÑADE ESTO AL FINAL DE TU STYLE.CSS --- */
+
+.search-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+  /* El margin-bottom lo maneja ahora el search-container */
+  margin-bottom: 0; 
+}
+
+/* Estilos para el menú desplegable de autocompletado */
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  margin-top: 4px;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: none; /* Oculto por defecto */
+}
+
+.suggestion-item {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
+  color: #475569;
+  transition: background-color 0.2s;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* --- FONDO ANIMADO CSS PURO --- */
+.weather-background {
+  /* Posicionamiento para que quede al fondo y no interfiera */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  
+  /* Color de fondo base (azul oscuro) */
+  background-color: #0f172a;
+  
+  /* Creación de las "partículas" con gradientes */
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.6) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.4) 1.5px, transparent 1.5px);
+    
+  /* Tamaño de los bloques que se van a repetir */
+  background-size: 150px 150px, 250px 250px, 350px 350px;
+  
+  /* Posición inicial */
+  background-position: 0 0, 0 0, 0 0;
+  
+  /* Animación infinita */
+  animation: fallingParticles 15s linear infinite;
+}
+
+/* Animación que mueve las capas hacia abajo para crear la caída */
+@keyframes fallingParticles {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    /* Los valores coinciden con el background-size para un bucle perfecto */
+    background-position: 0 150px, 0 250px, 0 350px;
+  }
+}
+
+/* Asegúrate de que tu app se vea por encima */
+#app {
+  position: relative;
+  z-index: 1;
+}
